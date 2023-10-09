@@ -2,19 +2,26 @@ package com.mjPro.serviceImpl;
 
 import java.util.List;
 
-import com.mjPro.entity.Vendor;
-import com.mjPro.service.VendorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.mjPro.entity.Vendor;
+import com.mjPro.repo.VendorRepo;
+import com.mjPro.service.VendorService;
+import com.mjPro.vo.VendorVo;
+@Service
 public class VendorImpl implements VendorService {
 
+	@Autowired
+	VendorRepo vendorRepo;
 	@Override
-	public List<Vendor> getAllVendor() {
+	public List<VendorVo> getAllVendor() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void saveVendor(Vendor vendor) {
+	public void saveVendor(VendorVo vendor) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -26,15 +33,14 @@ public class VendorImpl implements VendorService {
 	}
 
 	@Override
-	public void editVendor(Vendor vendor) {
+	public void editVendor(VendorVo vendor) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Boolean deleteVendor(int id) {
+	public void deleteVendor(int id) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

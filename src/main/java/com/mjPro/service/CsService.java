@@ -1,16 +1,17 @@
 package com.mjPro.service;
 
 import com.mjPro.entity.Cs;
+import com.mjPro.vo.CsVo;
 
 public interface CsService {
 
-     Cs getAllCs();
+     CsVo getAllCs();
     
-    void saveCs(Cs cs);
+    void saveCs(CsVo cs);
     
-    Cs findCsById(int id);
+    CsVo findCsById(int id);
     
-    void editCs(Cs cs);
+    void editCs(CsVo cs);
     
-    boolean deleteCs(int id);
+    void deleteCs(int id);
 }
