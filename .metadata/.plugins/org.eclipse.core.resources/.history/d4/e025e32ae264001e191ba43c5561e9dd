@@ -1,0 +1,10 @@
+package com.mj;
+
+public class GEmailSender {
+
+	public boolean sendEmail(String to, String from, String subject, String text) {
+		boolean flag = false;
+		
+		return flag;
+	}
+}

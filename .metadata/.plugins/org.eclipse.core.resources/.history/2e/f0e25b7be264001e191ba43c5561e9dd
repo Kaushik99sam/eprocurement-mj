@@ -1,0 +1,18 @@
+package com.mj;
+
+import javax.mail.Session;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+
+public class GEmailSender {
+	
+	@Autowired
+	JavaMailSender javaMailSender;
+
+	public boolean sendEmail(String to, String from, String subject, String text) {
+		boolean flag = false;
+		
+		return flag;
+	}
+}

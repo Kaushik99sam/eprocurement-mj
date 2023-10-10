@@ -1,0 +1,4 @@
+mail.smtp.auth=true
+mail.smtp.starttls.emable=true
+mail.smtp.host=smp.gmail.com
+mail.smtp.port=587

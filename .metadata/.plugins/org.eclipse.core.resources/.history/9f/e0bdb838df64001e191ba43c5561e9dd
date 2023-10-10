@@ -1,0 +1,22 @@
+package com.mj;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MaildemoApplication implements CommandLineRunner{
+
+	public static void main(String[] args) {
+		SpringApplication.run(MaildemoApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		GEmailSender gEmailSender = new GEmailSender();
+		
+		System.out.println(gEmailSender.sendEmail(null, null, null, null));
+		
+	}
+
+}
