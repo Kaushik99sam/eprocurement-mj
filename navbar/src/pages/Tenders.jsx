@@ -1,3 +1,4 @@
+import Main from "../components/Tenders/Main";
 export default function Tenders() {
-    return <h1>Tenders</h1>
+    return <Main />
 }
