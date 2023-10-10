@@ -10,6 +10,7 @@ export default function NavBar() {
             <li><Link to="/tenders">Tenders</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/about">About</Link></li>
+            <li><Link to="/login">Login</Link></li>
         </ul>
     </nav>
 }

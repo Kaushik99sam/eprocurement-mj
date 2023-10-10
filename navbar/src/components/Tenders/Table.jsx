@@ -1,10 +1,11 @@
-// src/components/sorting.table.js
 import React from "react";
 
 import { useTable, useSortBy, usePagination } from 'react-table';
 
 import Data from '../../data/data.json'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
+import { FaCaretDown, FaCaretUp } from 'react-icons/fa6' 
+import './Table.css';
 
 function Table({ columns, data }) {
     // Use the state and functions returned from useTable to build your UI
@@ -33,9 +34,9 @@ function Table({ columns, data }) {
 
     // Render the UI for your table
     return (
-        <div>
+        <div className="absolute">
             <table className="table" {...getTableProps()}>
-                <thead>
+                <thead className="color-change">
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
@@ -45,10 +46,11 @@ function Table({ columns, data }) {
                                     {column.render('Header')}
                                     {/* Add a sort direction indicator */}
                                     <span>
+                                        &nbsp;
                                         {column.isSorted
                                             ? column.isSortedDesc
-                                                ? ' 🔽'
-                                                : ' 🔼'
+                                                ? <FaCaretDown/>
+                                                : <FaCaretUp/>
                                             : ''}
                                     </span>
                                 </th>
@@ -59,10 +61,12 @@ function Table({ columns, data }) {
                 <tbody {...getTableBodyProps()}>
                     {page.map(
                         (row, i) => {
+                            // console.log(row);
                             prepareRow(row);
                             return (
                                 <tr {...row.getRowProps()}>
                                     {row.cells.map(cell => {
+                                        console.log(cell.column.Header)
                                         return (
                                             <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         )
@@ -80,11 +84,11 @@ function Table({ columns, data }) {
                     <strong>
                         {pageIndex+1} of {pageOptions.length}
                     </strong>
-                </span>
-                <button onClick={()=>previousPage()} disabled={!canPreviousPage}>Previous</button>
-                <button onClick={()=>nextPage()} disabled={!canNextPage}>next</button>
+                </span>&nbsp;
+                <button onClick={()=>previousPage()} disabled={!canPreviousPage} className="btn btn-sm color"><AiFillCaretLeft/> Previous</button>&nbsp;
+                <button onClick={()=>nextPage()} disabled={!canNextPage} className="btn btn-sm color">Next <AiFillCaretRight/></button>
             </div>
-        </div >
+        </div>
     )
 }
 
@@ -93,29 +97,17 @@ function SortingTableComponent() {
         () => [
             
                     {
-                        Header: 'First Name',
-                        accessor: 'firstName',
+                        Header: 'RFP ID',
+                        accessor: 'id',
                     },
                     {
-                        Header: 'Last Name',
-                        accessor: 'lastName',
-                    },
-                    {
-                        Header: 'Age',
-                        accessor: 'age',
-                    },
-                    {
-                        Header: 'Visits',
-                        accessor: 'visits',
+                        Header: 'Description',
+                        accessor: 'description',
                     },
                     {
                         Header: 'Status',
                         accessor: 'status',
-                    },
-                    {
-                        Header: 'Profile Progress',
-                        accessor: 'progress',
-                    },
+                    }
                 ],
         []
     )

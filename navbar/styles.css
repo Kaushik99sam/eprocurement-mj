@@ -29,13 +29,15 @@ body {
 .nav .logo{
     border-radius: 50%;
     height: 75px;
+    margin-left: 50%;
+    margin-top: 10%;
 }
 
 .nav ul {
     padding: 1px;
     list-style: none;
     display: flex;
-    gap: 10rem;
+    gap: 4rem;
 }
 
 .nav li {
