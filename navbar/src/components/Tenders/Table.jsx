@@ -1,10 +1,9 @@
 import React from "react";
 
 import { useTable, useSortBy, usePagination } from 'react-table';
-
 import Data from '../../data/data.json'
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa6' 
+import { FaCaretDown, FaCaretUp } from 'react-icons/fa6'
 import './Table.css';
 
 function Table({ columns, data }) {
@@ -30,7 +29,7 @@ function Table({ columns, data }) {
         usePagination
     )
 
-    const {pageIndex} = state
+    const { pageIndex } = state
 
     // Render the UI for your table
     return (
@@ -49,8 +48,8 @@ function Table({ columns, data }) {
                                         &nbsp;
                                         {column.isSorted
                                             ? column.isSortedDesc
-                                                ? <FaCaretDown/>
-                                                : <FaCaretUp/>
+                                                ? <FaCaretDown />
+                                                : <FaCaretUp />
                                             : ''}
                                     </span>
                                 </th>
@@ -61,12 +60,11 @@ function Table({ columns, data }) {
                 <tbody {...getTableBodyProps()}>
                     {page.map(
                         (row, i) => {
-                            // console.log(row);
                             prepareRow(row);
                             return (
                                 <tr {...row.getRowProps()}>
                                     {row.cells.map(cell => {
-                                        console.log(cell.column.Header)
+                                        console.log(cell)
                                         return (
                                             <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         )
@@ -82,11 +80,11 @@ function Table({ columns, data }) {
                 <span>
                     Page{''}
                     <strong>
-                        {pageIndex+1} of {pageOptions.length}
+                        {pageIndex + 1} of {pageOptions.length}
                     </strong>
                 </span>&nbsp;
-                <button onClick={()=>previousPage()} disabled={!canPreviousPage} className="btn btn-sm color"><AiFillCaretLeft/> Previous</button>&nbsp;
-                <button onClick={()=>nextPage()} disabled={!canNextPage} className="btn btn-sm color">Next <AiFillCaretRight/></button>
+                <button onClick={() => previousPage()} disabled={!canPreviousPage} className="btn btn-sm color"><AiFillCaretLeft /> Previous</button>&nbsp;
+                <button onClick={() => nextPage()} disabled={!canNextPage} className="btn btn-sm color">Next <AiFillCaretRight /></button>
             </div>
         </div>
     )
@@ -95,20 +93,24 @@ function Table({ columns, data }) {
 function SortingTableComponent() {
     const columns = React.useMemo(
         () => [
-            
-                    {
-                        Header: 'RFP ID',
-                        accessor: 'id',
-                    },
-                    {
-                        Header: 'Description',
-                        accessor: 'description',
-                    },
-                    {
-                        Header: 'Status',
-                        accessor: 'status',
-                    }
-                ],
+
+            {
+                Header: 'RFP ID',
+                accessor: 'id',
+            },
+            {
+                Header: 'Description',
+                accessor: 'description',
+            },
+            {
+                Header: 'Status',
+                accessor: 'status',
+                cell: (value) => {
+                    if (value === 'open')
+                        return (<button>Open</button>);
+                }
+            }
+        ],
         []
     )
     // console.log(JSON.stringify(data));
