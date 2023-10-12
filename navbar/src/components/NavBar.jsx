@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import mjpro from "../assets/mjpro_image.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
 
 export default function NavBar2() {
   return (
@@ -16,7 +15,7 @@ export default function NavBar2() {
           <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style={{backgroundColor: "white"}}>
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="offcanvas offcanvas-end w-50 p-3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{backgroundColor: "#053B50"}}>
+          <div className="offcanvas offcanvas-end w-50 p-3" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{backgroundColor: "#053B50"}}>
             <div className="offcanvas-header" >
               <div><img src={mjpro} alt="mjprolite" width="50" height="50" style={{ borderRadius: "50%" }}/></div>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>

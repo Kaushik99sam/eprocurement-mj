@@ -22,15 +22,24 @@ export default function Tenders() {
         {
             accessorKey: "status",
             header: () => "Status",
-            cell: (info) => (<><button className={`btn btn-sm ${info.getValue() === 'open' ? 'btn-primary' : 'btn-danger'}`} disabled={info.getValue() === 'closed'} onClick={() => navigate(`/suppliers/${info.row.original.id}`)}>{info.getValue()}</button></>),
+            cell: (info) => (<><button className={`btn btn-sm ${info.getValue() === 'open' ? 'btn-primary' : 'btn-secondary'}`} disabled={info.getValue() === 'closed'} onClick={() => navigate(`/suppliers/${info.row.original.id}`)}>{info.getValue()}</button></>),
             footer: (props) => props.column.id,
         }
     ], [])
 
     const [data, setData] = useState(() => Data);
 
-    return <Table {...{
-        data,
-        columns,
-    }} />
+    return (
+        <>
+            <div className="mb-2">
+                <div className="d-flex justify-content-between">
+                    <h5>List of RFQs</h5>
+                    <button className="btn btn-danger btn-sm">Generate CS</button>
+                </div>
+            </div>
+            <Table {...{
+                data,
+                columns,
+            }} />
+        </>)
 }

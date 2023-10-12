@@ -117,13 +117,13 @@ export default function Modals() {
               </table>
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer d-flex justify-content-between">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-danger"
               data-bs-dismiss="modal"
             >
-              Close
+              Generate PO
             </button>
             <button type="button" class="btn btn-primary">
               Save changes
