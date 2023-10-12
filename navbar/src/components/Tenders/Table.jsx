@@ -48,28 +48,28 @@ export default function TableFun() {
   const columns = React.useMemo(
     () => [
       {
-        header:"Id",
+        header: "Id",
         accessorKey: "id",
         cell: (info) => info.getValue(),
         footer: (props) => props.column.id,
       },
       {
-        accessorKey:"description",
+        accessorKey: "description",
         cell: (info) => info.getValue(),
-        header: () => "Last Name",
+        header: () => "Description",
         footer: (props) => props.column.id,
       },
       {
         accessorKey: "status",
-        header: () => "Age",
+        header: () => "Status",
+        cell: (info) => (<button className={`btn btn-sm ${info.getValue() === 'open' ? 'btn-primary' : 'btn-danger'}`} disabled={info.getValue() === 'closed'}>{info.getValue()}</button>),
         footer: (props) => props.column.id,
-      },
+      }
     ],
     []
   );
 
   const [data, setData] = React.useState(() => Data);
-  const refreshData = () => setData(() => Data);
 
   return (
     <>
@@ -79,13 +79,13 @@ export default function TableFun() {
           columns,
         }}
       />
-      <hr />
+      {/* <hr />
       <div>
         <button onClick={() => rerender()}>Force Rerender</button>
       </div>
       <div>
         <button onClick={() => refreshData()}>Refresh Data</button>
-      </div>
+      </div> */}
     </>
   );
 }
@@ -97,9 +97,9 @@ function Table({ data, columns }) {
     columns,
     state: {
       sorting,
-      pagination:{
-        pageIndex:0,
-        pageSize:3,
+      pagination: {
+        pageIndex: 0,
+        pageSize: 3,
       }
     },
     // Pipeline
@@ -117,7 +117,7 @@ function Table({ data, columns }) {
   return (
     <div className="p-2">
       <div className="h-2" />
-      <table className="table">
+      <table className="table" style={{borderRadius: "10%"}}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -136,8 +136,8 @@ function Table({ data, columns }) {
                           header.getContext()
                         )}
                         {{
-                          asc: <FaCaretUp/>,
-                          desc: <FaCaretDown/>
+                          asc: <FaCaretUp />,
+                          desc: <FaCaretDown />
                         }[header.column.getIsSorted()] ?? null}
                       </div>
                     )}

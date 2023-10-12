@@ -4,8 +4,8 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from './components/NavBar.jsx'
-import Footer from './components/Footer.jsx'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 

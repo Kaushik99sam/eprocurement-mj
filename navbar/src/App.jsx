@@ -1,4 +1,4 @@
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 import "../styles.css";
 import { Route, Routes } from 'react-router-dom';
 import ListOfRfp from './pages/ListOfRfp';
@@ -9,11 +9,12 @@ import Footer from './components/Footer';
 import Suppliers from './pages/Suppliers';
 import Login from './pages/Login';
 import './App.css';
+import NavBar2 from './components/NavBar';
 
 function App() {
   return (
     <>
-      <NavBar />
+      <NavBar2 />
       <div className='container'>
         <Routes>
           <Route path='/' element={<ListOfRfp/>}/>
