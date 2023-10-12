@@ -3,6 +3,7 @@ package com.mjPro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,22 +24,22 @@ public class IndentController {
 	IndentServiceImpl iserv;
 	
 	@PostMapping("/")
-	public void addData(@RequestBody IndentVo ivo) {
-		iserv.addIndentData(ivo);
+	public ResponseEntity<String> addData(@RequestBody IndentVo ivo) {
+		return iserv.addIndentData(ivo);
 	}
 	
 	@GetMapping("/")
-	public List<IndentVo> getAll(){
+	public ResponseEntity<List<IndentVo>> getAll(){
 		return iserv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public IndentVo getById(@PathVariable int id) {
+	public ResponseEntity<IndentVo> getById(@PathVariable int id) {
 		return iserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteData(@PathVariable int id) {
-		iserv.deleteData(id);
+	public ResponseEntity<String> deleteData(@PathVariable int id) {
+		return iserv.deleteData(id);
 	}
 }

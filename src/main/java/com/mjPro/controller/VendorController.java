@@ -3,6 +3,7 @@ package com.mjPro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,23 +24,23 @@ public class VendorController {
 	VendorServiceImpl vserv;
 	
 	@PostMapping("/")
-	public void addData(@RequestBody VendorVo venvo) {
-		vserv.addVendorData(venvo);
+	public ResponseEntity<String> addData(@RequestBody VendorVo venvo) {
+		return vserv.addVendorData(venvo);
 	}
 	
 	@GetMapping("/")
-	public List<VendorVo> getAll(){
+	public ResponseEntity<List<VendorVo>> getAll(){
 		return vserv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public VendorVo getById(@PathVariable int id) {
+	public ResponseEntity<VendorVo> getById(@PathVariable int id) {
 		return vserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteData(@PathVariable int id) {
-		vserv.deleteVendorData(id);
+	public ResponseEntity<String> deleteData(@PathVariable int id) {
+		return vserv.deleteVendorData(id);
 	}
 
 }

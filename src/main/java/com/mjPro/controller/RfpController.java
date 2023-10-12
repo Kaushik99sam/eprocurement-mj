@@ -3,6 +3,7 @@ package com.mjPro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,22 +24,22 @@ public class RfpController {
 	RfpServiceImpl rserv;
 	
 	@PostMapping("/")
-	public void addData(@RequestBody RfpVo rvo) {
-		rserv.addRfpData(rvo);
+	public ResponseEntity<String> addData(@RequestBody RfpVo rvo) {
+		return rserv.addRfpData(rvo);
 	}
 	
 	@GetMapping("/")
-	public List<RfpVo> getAll(){
+	public ResponseEntity<List<RfpVo>> getAll(){
 		return rserv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public RfpVo getById(@PathVariable int id) {
+	public ResponseEntity<RfpVo> getById(@PathVariable int id) {
 		return rserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteData(@PathVariable int id) {
-		rserv.deleteData(id);
+	public ResponseEntity<String> deleteData(@PathVariable int id) {
+		return rserv.deleteData(id);
 	}
 }

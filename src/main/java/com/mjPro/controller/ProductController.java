@@ -3,6 +3,7 @@ package com.mjPro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,22 +24,23 @@ public class ProductController {
 	ProductServiceImpl pserv;
 	
 	@PostMapping("/")
-	public void addData(@RequestBody ProductVo pvo) {
-		pserv.addProductData(pvo);
+	public ResponseEntity<String> addData(@RequestBody ProductVo pvo) {
+		return pserv.addProductData(pvo);
 	}
 	
 	@GetMapping("/")
-	public List<ProductVo> getAll(){
+	public ResponseEntity<List<ProductVo>> getAll(){
 		return pserv.getAll();
 	}
 	
+	
 	@GetMapping("/{id}")
-	public ProductVo getById(@PathVariable int id) {
+	public ResponseEntity<ProductVo> getById(@PathVariable int id) {
 		return pserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteData(@PathVariable int id) {
-		pserv.deleteProductData(id);
+	public ResponseEntity<String> deleteData(@PathVariable int id) {
+		return pserv.deleteProductData(id);
 	}
 }

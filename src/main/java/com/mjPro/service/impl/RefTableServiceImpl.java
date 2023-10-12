@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.mjPro.Vo.ProductVo;
@@ -15,9 +17,10 @@ import com.mjPro.entity.Vendor;
 import com.mjPro.repo.ProductRepo;
 import com.mjPro.repo.RefTableRepo;
 import com.mjPro.repo.VendorRepo;
+import com.mjPro.service.RefTableService;
 
 @Service
-public class RefTableServiceImpl {
+public class RefTableServiceImpl implements RefTableService{
 	
 	@Autowired
 	VendorRepo vrepo;
@@ -28,8 +31,11 @@ public class RefTableServiceImpl {
 	@Autowired
 	RefTableRepo refrepo;
 	
-	public void addRefTableData(RefTableVo refvo) {
+	@Override
+	public ResponseEntity<String> addRefTableData(RefTableVo refvo) {
 		RefTable reftable = new RefTable();
+		
+		
 		
 		reftable.setBidPrice(refvo.getBidPrice());
 		
@@ -39,13 +45,23 @@ public class RefTableServiceImpl {
 		Product pro = prepo.findById(refvo.getProIds().getId()).get();
 		reftable.setProduct(pro);
 		
-		refrepo.save(reftable);
+		reftable = refrepo.save(reftable);
+		
+		if(reftable == null) {
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Not inserted in database");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body("Data inserted in database");
+		
 	}
 	
-	public List<RefTableVo> getAll(){
+	@Override
+	public ResponseEntity<List<RefTableVo>> getAll(){
 		List<RefTable> refList = refrepo.findAll();
 		List<RefTableVo> refvoList = new ArrayList<RefTableVo>();
 		
+		if(refList == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		}
 		for(RefTable r : refList) {
 			VendorVo vo = new VendorVo(r.getVendor().getId(), r.getVendor().getName(), r.getVendor().getVendorId(), r.getVendor().getEmail());
 			ProductVo pvo = new ProductVo(r.getProduct().getId(), r.getProduct().getName(), r.getProduct().getEstPrice(), r.getProduct().getUom(), r.getProduct().getQty());
@@ -54,14 +70,15 @@ public class RefTableServiceImpl {
 			
 			refvoList.add(rvo);
 		}
-		return refvoList;
+		return ResponseEntity.status(HttpStatus.OK).body(refvoList);
 	}
 	
-	public RefTableVo getById(int id) {
+	@Override
+	public ResponseEntity<RefTableVo> getById(int id) {
 		RefTable ref = refrepo.findById(id).get();
 
 		if(ref == null) {
-			return null;
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 		}
 		
 		VendorVo vo = new VendorVo(ref.getVendor().getId(), ref.getVendor().getName(), ref.getVendor().getVendorId(), ref.getVendor().getEmail());
@@ -69,11 +86,13 @@ public class RefTableServiceImpl {
 		
 		RefTableVo refvo = new RefTableVo(ref.getId(), ref.getBidPrice(), vo, pvo);
 		
-		return refvo;
+		return ResponseEntity.status(HttpStatus.OK).body(refvo);
 	}
 	
-	public void deleteData(int id) {
+	@Override
+	public ResponseEntity<String> deleteData(int id) {
 		refrepo.deleteById(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Data deleted successfully!!!");
 	}
 	
 }

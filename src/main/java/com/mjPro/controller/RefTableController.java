@@ -3,6 +3,7 @@ package com.mjPro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,22 +24,22 @@ public class RefTableController {
 	RefTableServiceImpl refserv;
 	
 	@PostMapping("/")
-	public void addData(@RequestBody RefTableVo rvo) {
-		refserv.addRefTableData(rvo);
+	public ResponseEntity<String> addData(@RequestBody RefTableVo rvo) {
+		return refserv.addRefTableData(rvo);
 	}
 	
 	@GetMapping("/")
-	public List<RefTableVo> getAll(){
+	public ResponseEntity<List<RefTableVo>> getAll(){
 		return refserv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public RefTableVo getById(@PathVariable int id) {
+	public ResponseEntity<RefTableVo> getById(@PathVariable int id) {
 		return refserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteData(@PathVariable int id) {
-		refserv.deleteData(id);
+	public ResponseEntity<String> deleteData(@PathVariable int id) {
+		return refserv.deleteData(id);
 	}
 }

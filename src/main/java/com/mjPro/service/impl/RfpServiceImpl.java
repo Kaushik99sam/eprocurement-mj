@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.mjPro.Vo.CsVo;
@@ -19,9 +21,10 @@ import com.mjPro.repo.CsRepo;
 import com.mjPro.repo.IndentRepo;
 import com.mjPro.repo.RfpRepo;
 import com.mjPro.repo.VendorRepo;
+import com.mjPro.service.RfpService;
 
 @Service
-public class RfpServiceImpl {
+public class RfpServiceImpl implements RfpService{
 	@Autowired
 	IndentRepo irepo;
 	
@@ -34,7 +37,8 @@ public class RfpServiceImpl {
 	@Autowired
 	RfpRepo rrepo;
 	
-	public void addRfpData(RfpVo rfpvo) {
+	@Override
+	public ResponseEntity<String> addRfpData(RfpVo rfpvo) {
 		Rfp rfp = new Rfp();
 		rfp.setStatus(rfpvo.getStatus());
 		rfp.setIsSpilt(rfpvo.getIsSpilt());
@@ -55,14 +59,24 @@ public class RfpServiceImpl {
 		}
 		rfp.setVenList(venList);
 		
-		rrepo.save(rfp);
+		rfp = rrepo.save(rfp);
+		
+		if(rfp == null) {
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Not inserted in database");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body("Data inserted in database");
+		
 	}
 	
-	public List<RfpVo> getAll(){
+	@Override
+	public ResponseEntity<List<RfpVo>> getAll(){
 		
 		List<Rfp> rfpList = rrepo.findAll();
 		List<RfpVo> rfpvoList = new ArrayList<RfpVo>();
 		
+		if(rfpList == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		}
 		
 		for(Rfp r : rfpList) {
 			RfpVo rvo = new RfpVo();
@@ -90,14 +104,15 @@ public class RfpServiceImpl {
 			
 			rfpvoList.add(rvo);
 		}		
-		return rfpvoList;
+		return ResponseEntity.status(HttpStatus.OK).body(rfpvoList);
 	}
 	
-	public RfpVo getById(int id) {
+	@Override
+	public ResponseEntity<RfpVo> getById(int id) {
 		Rfp rfp = rrepo.findById(id).get();
 		
 		if(rfp == null) {
-			return null;
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 		}
 		
 		RfpVo rfpvo = new RfpVo();
@@ -124,10 +139,12 @@ public class RfpServiceImpl {
 		}
 		rfpvo.setVenIds(venvoList);
 		
-		return rfpvo;
+		return ResponseEntity.status(HttpStatus.OK).body(rfpvo);	
 	}
 	
-	public void deleteData(int id) {
+	@Override
+	public ResponseEntity<String> deleteData(int id) {
 		rrepo.deleteById(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Data deleted successfully!!!");
 	}
 }
