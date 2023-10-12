@@ -18,7 +18,7 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path='/' element={<ListOfRfp/>}/>
-          <Route path='/suppliers' element={<Suppliers/>}/>
+          <Route path='/suppliers/:id' element={<Suppliers/>}/>
           <Route path='/tenders' element={<Tenders/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/about' element={<About/>}/>

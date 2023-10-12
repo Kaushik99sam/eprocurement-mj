@@ -8,99 +8,22 @@ import {
   flexRender,
   getSortedRowModel,
 } from "@tanstack/react-table";
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa6'
+import { FaCaretDown, FaCaretUp } from 'react-icons/fa6';
 
-export default function TableFun() {
-  const Data = [
-    {
-      "id": "committee-c15dw",
-      "description": "editor-ktsjo",
-      "status": "closed"
-    },
-    {
-      "id": "midnight-wad0y",
-      "description": "data-7h4xf",
-      "status": "closed"
-    },
-    {
-      "id": "tree-sbdb0",
-      "description": "friendship-w8535",
-      "status": "open"
-    },
-    {
-      "id": "chin-borr8",
-      "description": "shirt-zox8m",
-      "status": "closed"
-    },
-    {
-      "id": "women-83ef0",
-      "description": "chalk-e8xbk",
-      "status": "closed"
-    },
-    {
-      "id": "women-83ef0",
-      "description": "chalk-e8xbk",
-      "status": "closed"
-    }
-  ]
-  const rerender = React.useReducer(() => ({}), {})[1];
+export default function Table({ data, columns }) {
 
-  const columns = React.useMemo(
-    () => [
-      {
-        header: "Id",
-        accessorKey: "id",
-        cell: (info) => info.getValue(),
-        footer: (props) => props.column.id,
-      },
-      {
-        accessorKey: "description",
-        cell: (info) => info.getValue(),
-        header: () => "Description",
-        footer: (props) => props.column.id,
-      },
-      {
-        accessorKey: "status",
-        header: () => "Status",
-        cell: (info) => (<button className={`btn btn-sm ${info.getValue() === 'open' ? 'btn-primary' : 'btn-danger'}`} disabled={info.getValue() === 'closed'}>{info.getValue()}</button>),
-        footer: (props) => props.column.id,
-      }
-    ],
-    []
-  );
-
-  const [data, setData] = React.useState(() => Data);
-
-  return (
-    <>
-      <Table
-        {...{
-          data,
-          columns,
-        }}
-      />
-      {/* <hr />
-      <div>
-        <button onClick={() => rerender()}>Force Rerender</button>
-      </div>
-      <div>
-        <button onClick={() => refreshData()}>Refresh Data</button>
-      </div> */}
-    </>
-  );
-}
-
-function Table({ data, columns }) {
   const [sorting, setSorting] = useState([]);
   const table = useReactTable({
     data,
     columns,
-    state: {
-      sorting,
+    initialState: {
       pagination: {
         pageIndex: 0,
         pageSize: 3,
       }
+    },
+    state: {
+      sorting
     },
     // Pipeline
     onSortingChange: setSorting,
@@ -112,12 +35,10 @@ function Table({ data, columns }) {
     debugTable: true,
   });
 
-  // console.log(table.nextPage())
-
   return (
     <div className="p-2">
       <div className="h-2" />
-      <table className="table" style={{borderRadius: "10%"}}>
+      <table className="table" style={{ borderRadius: "10%" }}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
