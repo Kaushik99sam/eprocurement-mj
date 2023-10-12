@@ -36,18 +36,18 @@ import React, { useState } from 'react';
 export default function NavBar2() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary p-0">
-      <div className="container-fluid p-2" style={{backgroundColor: "#053B50"}}>
-          <div>
-            <a className="navbar-brand ms-4" href="#">
-              <img src={mjpro} alt="mjprolite" width="50" height="50" style={{borderRadius: "50%"}}/>
-            </a>
-          </div>
-          <div>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{backgroundColor: "white"}}>
+      <div className="container-fluid p-2" style={{ backgroundColor: "#053B50" }}>
+        <div>
+          <a className="navbar-brand ms-4" href="#">
+            <img src={mjpro} alt="mjprolite" width="50" height="50" style={{ borderRadius: "50%" }} />
+          </a>
+        </div>
+        {/* <div>
+            <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation" style={{backgroundColor: "white", borderColor: "white"}}>
               <span className="navbar-toggler-icon" ></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav me-auto mb-5 mb-lg-0">
                 <li className="nav-item ">
                   <Link to="/suppliers" className="nav-link active text-light" aria-current="page" >Suppliers</Link>
                 </li>
@@ -55,18 +55,48 @@ export default function NavBar2() {
                   <Link to="/tenders" className="nav-link active text-light" aria-current="page" >Tenders</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/contact" className="nav-link active text-light" aria-current="page" >Contact</Link>
+                  <Link to="/contact" className="nav-link active" aria-current="page" >Contact</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/about" className="nav-link active text-light" aria-current="page" >About</Link>
+                  <Link to="/about" className="nav-link active" aria-current="page" >About</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link active text-light" aria-current="page" >Login</Link>
+                  <Link to="/login" className="nav-link active" aria-current="page" >Login</Link>
+                </li>
+              </ul>
+            </div>
+          </div> */}
+        <div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style={{backgroundColor: "white"}}>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end w-50 p-3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{backgroundColor: "#053B50"}}>
+            <div class="offcanvas-header" >
+              <div><img src={mjpro} alt="mjprolite" width="50" height="50" style={{ borderRadius: "50%" }}/></div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                <Link to="/suppliers" className="nav-link active text-light" aria-current="page" >Suppliers</Link>
+                </li>
+                <li class="nav-item">
+                <Link to="/tenders" className="nav-link active text-light" aria-current="page" >Tenders</Link>
+                </li>
+                <li class="nav-item">
+                <Link to="/contact" className="nav-link active text-light" aria-current="page" >Contact</Link>
+                </li>
+                <li>
+                <Link to="/about" className="nav-link active text-light" aria-current="page" >About</Link>
+                </li>
+                <li>
+                <Link to="/login" className="nav-link active text-light" aria-current="page" >Login</Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+      </div>
     </nav>
   )
 }
