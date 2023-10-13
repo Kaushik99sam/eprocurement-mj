@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mjPro.Vo.RfpVo;
+import com.mjPro.Vo.VendorVo;
 import com.mjPro.service.impl.RfpServiceImpl;
 
 @RestController
@@ -37,6 +38,13 @@ public class RfpController {
 	public ResponseEntity<RfpVo> getById(@PathVariable int id) {
 		return rserv.getById(id);
 	}
+	
+	@GetMapping("/vendor/{id}")
+	public ResponseEntity<List<VendorVo>> getVendorListByRfpId(@PathVariable int id){
+		return rserv.getVendorListByRfpId(id);
+		
+	}
+	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteData(@PathVariable int id) {

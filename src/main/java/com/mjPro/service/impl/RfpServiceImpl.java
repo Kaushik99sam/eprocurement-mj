@@ -143,6 +143,21 @@ public class RfpServiceImpl implements RfpService{
 	}
 	
 	@Override
+	public ResponseEntity<List<VendorVo>> getVendorListByRfpId(int id){
+		Rfp rfp = rrepo.findById(id).get();
+		List<VendorVo> venvoList = new ArrayList<VendorVo>();
+		
+		if(rfp == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		}
+		for(Vendor v : rfp.getVenList()) {
+			VendorVo vvo = new VendorVo(v.getId(), v.getName(), v.getVendorId(), v.getEmail());
+			venvoList.add(vvo);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(venvoList);
+	}
+	@Override
 	public ResponseEntity<String> deleteData(int id) {
 		rrepo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.OK).body("Data deleted successfully!!!");

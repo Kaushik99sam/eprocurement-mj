@@ -3,7 +3,11 @@ package com.mjPro.service.impl;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +20,7 @@ import com.mjPro.repo.RefTableRepo;
 import com.mjPro.repo.VendorRepo;
 
 @Service
-public class CsvFileCreator {
-
+public class CsvFile {
 	@Autowired
 	ProductRepo prepo;
 	
@@ -26,7 +29,7 @@ public class CsvFileCreator {
 	
 	@Autowired
 	RefTableRepo refrepo;
-
+	
     public void csv() {
     	
     	
@@ -41,6 +44,7 @@ public class CsvFileCreator {
             PrintWriter printWriter = new PrintWriter(fileWriter);
 
             List<Product> proList = prepo.findAll();
+            List<RefTable> refList = refrepo.findAll();
             
             String frow = " ,";
                         
@@ -51,6 +55,10 @@ public class CsvFileCreator {
             frow = frow + "TotalPrice";
             printWriter.println(frow);
             
+            
+//            int lengthOfVendorList = venrepo.findAll().size();
+            
+                        
             List<Vendor> venList = venrepo.findAll();
             for(Vendor v : venList) { 
             	String body = "";
@@ -61,6 +69,7 @@ public class CsvFileCreator {
             	for(RefTable obj : ref_pro) {
             		totalPrice = totalPrice + obj.getBidPrice();
             		body = body + obj.getBidPrice() + ",";
+//            		totalPrice = totalPrice + obj.getBidPrice();
             	}
             	body = body + totalPrice;
             	

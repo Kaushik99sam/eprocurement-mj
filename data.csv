@@ -1,2 +1,5 @@
-Vendor, Product2,Product3,Product1,
-Vendor1,340.67,
+ ,Product2,Product3,Product1,TotalPrice
+Vendor3,0.0
+Vendor1,3000.0,3000.0
+Vendor2,0.0
+Est Price,340.67,500.0,200.67,1041.3400000000001
