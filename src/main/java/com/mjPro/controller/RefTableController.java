@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mjPro.Vo.RefTableVo;
+import com.mjPro.Vo.VendorVo;
+import com.mjPro.entity.RefTable;
 import com.mjPro.service.impl.RefTableServiceImpl;
 
 @RestController
@@ -38,6 +40,11 @@ public class RefTableController {
 		return refserv.getById(id);
 	}
 	
+	@GetMapping("/vendor/{id}")  // to get all reftable object for a particular vendorid
+	public List<RefTable> getByVendorId(@PathVariable int id){
+		return refserv.getByVendorId(id);
+		
+	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
 		return refserv.deleteData(id);

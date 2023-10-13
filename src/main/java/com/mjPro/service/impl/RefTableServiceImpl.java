@@ -89,6 +89,10 @@ public class RefTableServiceImpl implements RefTableService{
 		return ResponseEntity.status(HttpStatus.OK).body(refvo);
 	}
 	
+	public List<RefTable> getByVendorId(int id){
+		return refrepo.getByVendorId(id);
+	}
+	
 	@Override
 	public ResponseEntity<String> deleteData(int id) {
 		refrepo.deleteById(id);
