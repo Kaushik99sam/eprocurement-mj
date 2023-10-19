@@ -1,4 +1,3 @@
-// import NavBar from './components/NavBar';
 import "../styles.css";
 import { Route, Routes } from 'react-router-dom';
 import ListOfRfp from './pages/ListOfRfp';
@@ -10,6 +9,7 @@ import Suppliers from './pages/Suppliers';
 import Login from './pages/Login';
 import './App.css';
 import NavBar2 from './components/NavBar';
+import SplitIndent from "./pages/SplitIndent";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/splitindent' element={<SplitIndent/>}/>
         </Routes>
       </div>
       <Footer/>

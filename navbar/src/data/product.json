@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "product_name": "Table Cloth 62x120 White",
+        "est_price": "$4.83"
+    },
+    {
+        "id": 2,
+        "product_name": "Bar - Granola Trail Mix Fruit Nut",
+        "est_price": "$3.75"
+    },
+    {
+        "id": 3,
+        "product_name": "Soup - Base Broth Beef",
+        "est_price": "$4.16"
+    },
+    {
+        "id": 4,
+        "product_name": "Milk Powder",
+        "est_price": "$9.13"
+    },
+    {
+        "id": 5,
+        "product_name": "Milk - 2% 250 Ml",
+        "est_price": "$1.34"
+    },
+    {
+        "id": 6,
+        "product_name": "Veal - Heart",
+        "est_price": "$1.52"
+    },
+    {
+        "id": 7,
+        "product_name": "Kaffir Lime Leaves",
+        "est_price": "$7.53"
+    },
+    {
+        "id": 8,
+        "product_name": "Compound - Raspberry",
+        "est_price": "$9.38"
+    },
+    {
+        "id": 9,
+        "product_name": "Tart - Butter Plain Squares",
+        "est_price": "$1.78"
+    },
+    {
+        "id": 10,
+        "product_name": "Bagel - Sesame Seed Presliced",
+        "est_price": "$4.44"
+    }
+]
