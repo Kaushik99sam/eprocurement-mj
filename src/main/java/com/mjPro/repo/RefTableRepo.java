@@ -10,8 +10,8 @@ import com.mjPro.entity.RefTable;
 
 @Repository
 public interface RefTableRepo extends JpaRepository<RefTable, Integer> {
-	@Query("select r from RefTable r where r.vendor.id = :id ")
-	public List<RefTable> getByVendorId(int id);
+//	@Query("select r from RefTable r where r.vendor.id = :id ")
+//	public List<RefTable> getByVendorId(int id);
 	
 	
 }

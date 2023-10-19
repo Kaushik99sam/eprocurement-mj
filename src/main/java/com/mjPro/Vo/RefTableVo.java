@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 public class RefTableVo {
 	Integer id;
 	Double bidPrice;
-	VendorVo vendorvo;
-	ProductVo productvo;
-	RfpVo rfpvo;
+	VendorVo vendor;
+	ProductVo product;
+	RfpVo rfp;
 	LocalDateTime creationTime;
 	LocalDateTime updationTime;
 }

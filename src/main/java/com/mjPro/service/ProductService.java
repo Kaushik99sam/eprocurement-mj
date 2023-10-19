@@ -8,11 +8,11 @@ import com.mjPro.Vo.ProductVo;
 
 public interface ProductService {
 	
-	public ResponseEntity<String> addProductData(ProductVo provo);
+	public void addData(ProductVo provo);
 	
-	public ResponseEntity<List<ProductVo>> getAll();
+	public List<ProductVo> getAll();
 	
-	public ResponseEntity<ProductVo> getById(int id);
+	public ProductVo getById(int id);
 	
-	public ResponseEntity<String> deleteProductData(int id);
+	public void deleteData(int id);
 }

@@ -8,11 +8,11 @@ import com.mjPro.Vo.RefTableVo;
 
 public interface RefTableService {
 	
-	public ResponseEntity<String> addRefTableData(RefTableVo refvo);
+	public void addData(RefTableVo refvo);
 	
-	public ResponseEntity<List<RefTableVo>> getAll();
+	public List<RefTableVo> getAll();
 	
-	public ResponseEntity<RefTableVo> getById(int id);
+	public RefTableVo getById(int id);
 	
-	public ResponseEntity<String> deleteData(int id);
+	public void deleteData(int id);
 }

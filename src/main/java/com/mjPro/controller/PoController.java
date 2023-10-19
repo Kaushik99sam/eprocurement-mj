@@ -1,5 +1,6 @@
 package com.mjPro.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,35 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mjPro.Vo.ProductVo;
-import com.mjPro.service.impl.ProductServiceImpl;
+import com.mjPro.Vo.CsVo;
+import com.mjPro.Vo.PoVo;
+import com.mjPro.service.impl.PoServiceimpl;
 
 @RestController
-@RequestMapping("/product")
-
-public class ProductController {
+@RequestMapping("/po")
+public class PoController {
 
 	@Autowired
-	ProductServiceImpl pserv;
+	PoServiceimpl poserv;
 	
 	@PostMapping("/")
-	public ResponseEntity<String> addData(@RequestBody ProductVo pvo) {
-		return pserv.addData(pvo);
+	public ResponseEntity<String> addData(@RequestBody PoVo povo) {
+		return poserv.addData(povo);
 	}
 	
 	@GetMapping("/")
-	public ResponseEntity<List<ProductVo>> getAll(){
-		return pserv.getAll();
+	public ResponseEntity<List<PoVo>> getAll() {
+		return poserv.getAll();
 	}
 	
-	
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductVo> getById(@PathVariable int id) {
-		return pserv.getById(id);
+	public ResponseEntity<PoVo> getById(@PathVariable int id) {
+		return poserv.getById(id);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
-		return pserv.deleteData(id);
+		return poserv.deleteData(id);
 	}
+	
 }

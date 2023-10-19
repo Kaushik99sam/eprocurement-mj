@@ -18,7 +18,7 @@ public class ProductVo {
 	Double estPrice;
 	String uom;
 	Integer qty;
-	RfpVo rfpvo;
+	RfpVo rfp;
 	LocalDateTime creationTime;
 	LocalDateTime updationTime;
 }

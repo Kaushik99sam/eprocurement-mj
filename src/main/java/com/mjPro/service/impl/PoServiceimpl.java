@@ -5,41 +5,37 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mjPro.Vo.CsVo;
-import com.mjPro.repo.CsRepo;
-import com.mjPro.repo.VendorRepo;
-import com.mjPro.service.CsService;
-
+import com.mjPro.Vo.PoVo;
+import com.mjPro.repo.PoRepo;
+import com.mjPro.service.PoService;
 @Service
-public class CsServiceImpl implements CsService{
-	@Autowired
-	CsRepo csrepo;
-	
-	@Autowired
-	VendorRepo venrepo;
+public class PoServiceimpl implements PoService {
 
+	@Autowired
+	PoRepo poRepo;
+	
 	@Override
-	public void addData(CsVo csvo) {
+	public void addData(PoVo pvo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<CsVo> getAll() {
+	public List<PoVo> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CsVo getById(int id) {
+	public PoVo getById(int id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void deleteData(int id) {
-	
-		
+		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

@@ -25,7 +25,7 @@ public class VendorController {
 	
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody VendorVo venvo) {
-		return vserv.addVendorData(venvo);
+		return vserv.addData(venvo);
 	}
 	
 	@GetMapping("/")
@@ -40,7 +40,7 @@ public class VendorController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
-		return vserv.deleteVendorData(id);
+		return vserv.deleteData(id);
 	}
 
 }

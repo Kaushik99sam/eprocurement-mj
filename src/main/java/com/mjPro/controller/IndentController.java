@@ -25,7 +25,7 @@ public class IndentController {
 	
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody IndentVo ivo) {
-		return iserv.addIndentData(ivo);
+		return iserv.addData(ivo);
 	}
 	
 	@GetMapping("/")

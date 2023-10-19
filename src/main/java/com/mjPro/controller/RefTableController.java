@@ -27,7 +27,7 @@ public class RefTableController {
 	
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody RefTableVo rvo) {
-		return refserv.addRefTableData(rvo);
+		return refserv.addData(rvo);
 	}
 	
 	@GetMapping("/")
@@ -40,9 +40,9 @@ public class RefTableController {
 		return refserv.getById(id);
 	}
 	
-	@GetMapping("/vendor/{id}")  // to get all reftable object for a particular vendorid
-	public List<RefTable> getByVendorId(@PathVariable int id){
-		return refserv.getByVendorId(id);
+//	@GetMapping("/vendor/{id}")  // to get all reftable object for a particular vendorid
+//	public List<RefTable> getByVendorId(@PathVariable int id){
+//		return refserv.getByVendorId(id);
 		
 	}
 	@DeleteMapping("/{id}")

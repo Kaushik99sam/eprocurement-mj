@@ -8,11 +8,11 @@ import com.mjPro.Vo.IndentVo;
 
 public interface IndentService {
 	
-	public ResponseEntity<String> addIndentData(IndentVo ivo);
+	public void addData(IndentVo ivo);
 	
-	public ResponseEntity<List<IndentVo>> getAll();
+	public List<IndentVo> getAll();
 	
-	public ResponseEntity<IndentVo> getById(int id);
+	public IndentVo getById(int id);
 	
-	public ResponseEntity<String> deleteData(int id);
+	public void deleteData(int id);
 }

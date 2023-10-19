@@ -25,7 +25,7 @@ public class CsController {
 	
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody CsVo csvo) {
-		return csserv.addCsData(csvo);
+		return csserv.addData(csvo);
 	}
 	
 	@GetMapping("/")
@@ -40,6 +40,6 @@ public class CsController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
-		return csserv.deleteCsData(id);
+		return csserv.deleteData(id);
 	}
 }

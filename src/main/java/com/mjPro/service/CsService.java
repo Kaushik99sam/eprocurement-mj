@@ -8,11 +8,11 @@ import com.mjPro.Vo.CsVo;
 
 public interface CsService {
 	
-	public ResponseEntity<String> addCsData(CsVo csvo);
+	public void addData(CsVo csvo);
 	
-	public ResponseEntity<List<CsVo>> getAll();
+	public List<CsVo> getAll();
 	
-	public ResponseEntity<CsVo> getById(int id);
+	public CsVo getById(int id);
 	
-	public ResponseEntity<String> deleteCsData(int id);
+	public void deleteData(int id);
 }

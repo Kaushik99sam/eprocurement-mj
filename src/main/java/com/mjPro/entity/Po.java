@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Po {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@OneToMany
 	@JoinColumn(name = "reftable_id")
 	RefTable refTable;
 	

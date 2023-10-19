@@ -9,13 +9,12 @@ import com.mjPro.Vo.VendorVo;
 
 public interface RfpService {
 	
-	public ResponseEntity<String> addRfpData(RfpVo rfpvo);
+	public void addData(RfpVo rfpvo);
 	
-	public ResponseEntity<List<RfpVo>> getAll();
+	public List<RfpVo> getAll();
 	
-	public ResponseEntity<RfpVo> getById(int id);
+	public RfpVo getById(int id);
 	
-	public ResponseEntity<String> deleteData(int id);
+	public void deleteData(int id);
 	
-	public ResponseEntity<List<VendorVo>> getVendorListByRfpId(int id);
 }

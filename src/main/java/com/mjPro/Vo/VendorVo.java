@@ -14,7 +14,7 @@ public class VendorVo {
 	String name;
 	String vendorId;
 	String email;
-	RfpVo rfpvo;
+	RfpVo rfp;
 	LocalDateTime creationTime;
 	LocalDateTime updationTime;
 }

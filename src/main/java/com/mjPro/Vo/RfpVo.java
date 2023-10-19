@@ -1,6 +1,5 @@
 package com.mjPro.Vo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -16,7 +15,7 @@ public class RfpVo {
 	Boolean isSpilt;
 	String description;
 	
-	IndentVo indentvo;
+	IndentVo indent;
 	
 	LocalDateTime creationTime;
 	LocalDateTime updationTime;

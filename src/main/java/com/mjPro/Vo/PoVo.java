@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class PoVo {
 
 	Integer id;
-	RefTableVo refTableVo;
+	RefTableVo refTable;
 	LocalDateTime creationTime;
 	LocalDateTime updationTime;
 }

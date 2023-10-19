@@ -26,7 +26,7 @@ public class RfpController {
 	
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody RfpVo rvo) {
-		return rserv.addRfpData(rvo);
+		return rserv.addData(rvo);
 	}
 	
 	@GetMapping("/")
@@ -39,9 +39,9 @@ public class RfpController {
 		return rserv.getById(id);
 	}
 	
-	@GetMapping("/vendor/{id}")
-	public ResponseEntity<List<VendorVo>> getVendorListByRfpId(@PathVariable int id){
-		return rserv.getVendorListByRfpId(id);
+//	@GetMapping("/vendor/{id}")
+//	public ResponseEntity<List<VendorVo>> getVendorListByRfpId(@PathVariable int id){
+//		return rserv.getVendorListByRfpId(id);
 		
 	}
 	
