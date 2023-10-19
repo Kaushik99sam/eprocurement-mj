@@ -35,7 +35,7 @@ public class PoServiceimpl implements PoService {
 	@Override
 	public void deleteData(int id) {
 		// TODO Auto-generated method stub
-		
+		poRepo.deleteById(id);
 	}
 
 }

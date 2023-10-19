@@ -38,7 +38,7 @@ public class CsServiceImpl implements CsService{
 	@Override
 	public void deleteData(int id) {
 	
-		
+		csrepo.deleteById(id);
 		
 	}
 	

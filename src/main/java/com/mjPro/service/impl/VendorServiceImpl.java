@@ -36,7 +36,7 @@ public class VendorServiceImpl implements VendorService{
 	@Override
 	public void deleteData(int id) {
 		// TODO Auto-generated method stub
-		
+		venrepo.deleteById(id);
 	}
 	
 	

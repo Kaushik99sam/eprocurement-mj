@@ -35,7 +35,7 @@ public class IndentServiceImpl implements IndentService{
 	@Override
 	public void deleteData(int id) {
 		// TODO Auto-generated method stub
-		
+		irepo.deleteById(id);
 	}
 	
 }

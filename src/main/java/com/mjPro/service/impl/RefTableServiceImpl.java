@@ -44,7 +44,7 @@ public class RefTableServiceImpl implements RefTableService{
 	@Override
 	public void deleteData(int id) {
 		// TODO Auto-generated method stub
-		
+		refrepo.deleteById(id);
 	}
 	
 	

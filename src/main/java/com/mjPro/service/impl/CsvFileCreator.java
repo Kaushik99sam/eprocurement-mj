@@ -52,22 +52,22 @@ public class CsvFileCreator {
             printWriter.println(frow);
             
             List<Vendor> venList = venrepo.findAll();
-            for(Vendor v : venList) { 
-            	String body = "";
-            	Double totalPrice = 0.0;
-            	int ven_id = v.getId();
-            	List<RefTable> ref_pro = refrepo.getByVendorId(ven_id);
-            	System.out.println(ref_pro);
-            	body = body + v.getName()+ ",";
-            	for(RefTable obj : ref_pro) {
-            		totalPrice = totalPrice + obj.getBidPrice();
-            		body = body + obj.getBidPrice() + ",";
-            	}
-            	body = body + totalPrice;
-            	
-            	printWriter.println(body);
-            	
-            }
+//            for(Vendor v : venList) { 
+//            	String body = "";
+//            	Double totalPrice = 0.0;
+//            	int ven_id = v.getId();
+//            	List<RefTable> ref_pro = refrepo.getByVendorId(ven_id);
+//            	System.out.println(ref_pro);
+//            	body = body + v.getName()+ ",";
+//            	for(RefTable obj : ref_pro) {
+//            		totalPrice = totalPrice + obj.getBidPrice();
+//            		body = body + obj.getBidPrice() + ",";
+//            	}
+//            	body = body + totalPrice;
+//            	
+//            	printWriter.println(body);
+//            	
+//            }
             
             String estPrice = "Est Price,";
             Double totalEstPrice = 0.0;

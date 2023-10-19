@@ -47,8 +47,8 @@ public class RfpServiceImpl implements RfpService{
 	@Override
 	public void deleteData(int id) {
 		// TODO Auto-generated method stub
-		
-	}
+		rrepo.deleteById(id);
+		}
 
 
 	
