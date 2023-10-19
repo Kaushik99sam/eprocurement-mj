@@ -1,5 +1,7 @@
 package com.mjPro.Vo;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,4 +14,7 @@ public class VendorVo {
 	String name;
 	String vendorId;
 	String email;
+	RfpVo rfpvo;
+	LocalDateTime creationTime;
+	LocalDateTime updationTime;
 }

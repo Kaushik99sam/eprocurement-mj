@@ -1,7 +1,7 @@
 package com.mjPro.Vo;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,12 +16,8 @@ public class RfpVo {
 	Boolean isSpilt;
 	String description;
 	
-	LocalDate creation_date;
-	LocalDate updation_date;
+	IndentVo indentvo;
 	
-	IndentVo indentId;
-	
-	List<VendorVo> venIds;
-	
-	CsVo csId;
+	LocalDateTime creationTime;
+	LocalDateTime updationTime;
 }

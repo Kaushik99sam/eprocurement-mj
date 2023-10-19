@@ -1,5 +1,6 @@
 package com.mjPro.Vo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -11,4 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class IndentVo {
 	Integer id;
+	LocalDateTime creationTime;
+	LocalDateTime updationTime;
 }

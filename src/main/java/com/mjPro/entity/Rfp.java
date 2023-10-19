@@ -1,8 +1,10 @@
 package com.mjPro.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,23 +26,21 @@ public class Rfp {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(length = 25)
 	private String status;
 	private Boolean isSpilt;
+	@Column(length=50)
 	private String description;
-	
-	private LocalDate creation_date;
-	private LocalDate updation_date;
 	
 	@OneToOne
 	@JoinColumn(name = "indent_id")
 	Indent indent;
 	
-	@OneToMany
-	@JoinColumn(name = "rfp_id")
-	List<Vendor> venList;
+	@Column(columnDefinition = "TIMESTAMP")
+	LocalDateTime creationTime;
+	@Column(columnDefinition = "TIMESTAMP")
+	LocalDateTime updationTime;
 	
-	@OneToOne
-	@JoinColumn(name = "cs_id")
-	Cs cs;
+	
 	
 }

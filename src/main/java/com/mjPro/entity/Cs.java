@@ -1,7 +1,9 @@
 package com.mjPro.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,4 +24,8 @@ public class Cs {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(columnDefinition = "TIMESTAMP")
+	LocalDateTime creationTime;
+	@Column(columnDefinition = "TIMESTAMP")
+	LocalDateTime updationTime;
 }

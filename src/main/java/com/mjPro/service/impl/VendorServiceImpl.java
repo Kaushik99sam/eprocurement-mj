@@ -1,5 +1,6 @@
 package com.mjPro.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.mjPro.Vo.IndentVo;
+import com.mjPro.Vo.RfpVo;
 import com.mjPro.Vo.VendorVo;
+import com.mjPro.entity.Indent;
+import com.mjPro.entity.Rfp;
 import com.mjPro.entity.Vendor;
 import com.mjPro.repo.VendorRepo;
 import com.mjPro.service.VendorService;
@@ -25,7 +30,11 @@ public class VendorServiceImpl implements VendorService{
 		vendor.setName(venvo.getName());
 		vendor.setVendorId(venvo.getVendorId());
 		vendor.setEmail(venvo.getEmail());
-		
+		vendor.setCreationTime(venvo.getCreationTime());
+		vendor.setUpdationTime(venvo.getUpdationTime());
+		Indent indent = new Indent(venvo.getRfpvo().getIndentvo().getId(), LocalDateTime.now(),LocalDateTime.now());
+		Rfp rfp = new Rfp(venvo.getRfpvo().getId(),venvo.getRfpvo().getStatus(),venvo.getRfpvo().getIsSpilt(),venvo.getRfpvo().getDescription(),indent,LocalDateTime.now(),LocalDateTime.now());
+		vendor.setRfp(rfp);
 		vendor = venrepo.save(vendor);
 		
 		if(vendor == null) {

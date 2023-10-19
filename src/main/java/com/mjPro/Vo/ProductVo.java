@@ -1,6 +1,9 @@
 package com.mjPro.Vo;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import com.mjPro.entity.Rfp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,4 +18,7 @@ public class ProductVo {
 	Double estPrice;
 	String uom;
 	Integer qty;
+	RfpVo rfpvo;
+	LocalDateTime creationTime;
+	LocalDateTime updationTime;
 }
