@@ -28,6 +28,8 @@ public class Vendor {
 	private String vendorId;
 	@Column(length = 30)
 	private String email;
+	@Column(length = 50)
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name = "rfp_id")
