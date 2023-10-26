@@ -17,5 +17,5 @@ public interface RefTableService {
 	public String deleteData(int id);
 	
 	public List<RefTableVo> getByRfp(int id);
-	
+		
 }

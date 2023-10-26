@@ -12,7 +12,10 @@ import com.mjPro.entity.Rfp;
 @Repository
 public interface RefTableRepo extends JpaRepository<RefTable, Integer> {
 	
-	@Query("select r from RefTable r where r.rfp.id = :id ")
+//	@Query("select r from RefTable r where r.rfp.id = :id ")
+//	public List<RefTable> findByRfp(int id);
+	
+	@Query("select r from RefTable r where r.rfp.id = :id order by r.bidPrice asc")
 	public List<RefTable> findByRfp(int id);
 
 }

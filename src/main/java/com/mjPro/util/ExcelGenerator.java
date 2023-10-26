@@ -28,13 +28,14 @@ public class ExcelGenerator {
 	public static String SHEET_NAME = "category_data";
 	
 	public static ByteArrayInputStream dataToExcel(List<RefTable> refList) {
-		List<String> pNames = new ArrayList<String>();
 		Map<String, List<Double>> vendorBids = new HashMap<String, List<Double>>();
 		Set<Double> estSet = new LinkedHashSet<Double>();
+		Set<String> pNames = new LinkedHashSet<String>();
 		for(RefTable rt: refList) {
 			List<Double> bidList = vendorBids.getOrDefault(rt.getVendor().getName(), new ArrayList<Double>());
 			bidList.add(rt.getBidPrice());
 			estSet.add(rt.getProduct().getEstPrice());
+			pNames.add(rt.getProduct().getName());
 			vendorBids.put(rt.getVendor().getName(), bidList);
 		}
 		Workbook workbook = new XSSFWorkbook();
@@ -48,10 +49,11 @@ public class ExcelGenerator {
 			
 			//create row
 			Row row = sheet.createRow(0);
-			
-			for(int i=0;i<pNames.size();i++) {
-				Cell cell =row.createCell(i+1);
-				cell.setCellValue(pNames.get(i));
+			int i = 0;
+			for(String pname: pNames) {
+				Cell cell = row.createCell(i+1);
+				cell.setCellValue(pname);
+				i++;
 			}
 			
 			//value rows

@@ -97,5 +97,4 @@ public class RefTableServiceImpl implements RefTableService{
 		return refvoList;
 	}
 	
-	
 }
