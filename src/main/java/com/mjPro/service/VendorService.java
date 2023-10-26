@@ -15,4 +15,6 @@ public interface VendorService {
 	public VendorVo getById(int id);
 	
 	public String deleteData(int id);
+	
+	public List<VendorVo> getByRfpId(int id);
 }

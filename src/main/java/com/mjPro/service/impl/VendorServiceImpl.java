@@ -68,6 +68,14 @@ public class VendorServiceImpl implements VendorService{
 		venrepo.deleteById(id);
 		return "Vendor data deleted successfully!!!";
 	}
+
+	@Override
+	public List<VendorVo> getByRfpId(int id) {
+		List<Vendor> vlist = venrepo.findByRfp_Id(id);
+		List<VendorVo> volist = ClassConvertor.convertList(vlist, VendorVo.class);
+//		System.out.println(vlist);
+		return volist;
+	}
 	
 	
 }

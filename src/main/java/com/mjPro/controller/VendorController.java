@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import com.mjPro.service.impl.VendorServiceImpl;
 
 @RestController
 @RequestMapping("/vendor")
-
+@CrossOrigin("*")
 public class VendorController {
 	
 	@Autowired
@@ -51,6 +52,11 @@ public class VendorController {
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
 		String str = vserv.deleteData(id);
 		return ResponseEntity.ok().body(str);
+	}
+	
+	@GetMapping("/rfp/{id}")
+	public ResponseEntity<List<VendorVo>> getByRfpId(@PathVariable int id){
+		return ResponseEntity.ok(vserv.getByRfpId(id));
 	}
 
 }

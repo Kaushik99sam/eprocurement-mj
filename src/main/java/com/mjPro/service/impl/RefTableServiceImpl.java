@@ -1,6 +1,7 @@
 package com.mjPro.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,18 @@ public class RefTableServiceImpl implements RefTableService{
 		List<RefTableVo> refvoList = ClassConvertor.convertList(refList, RefTableVo.class);
 		System.out.println(refvoList);
 		return refvoList;
+	}
+
+	@Override
+	public List<RefTableVo> getProductByVendorId(int id) {
+//		System.out.println(refrepo.findByProduct_Id(id));
+		List<RefTableVo> refVoList = ClassConvertor.convertList(refrepo.findByVendor_Id(id),RefTableVo.class);
+//		List<ProductVo> pvolist = new ArrayList<ProductVo>();
+//		for(RefTableVo rtv : refVoList) {
+//			pvolist.add(rtv.getProduct());
+//		}
+		
+		return refVoList;
 	}
 	
 }
