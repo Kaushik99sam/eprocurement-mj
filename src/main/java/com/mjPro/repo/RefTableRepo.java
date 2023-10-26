@@ -14,5 +14,5 @@ public interface RefTableRepo extends JpaRepository<RefTable, Integer> {
 	
 	@Query("select r from RefTable r where r.rfp.id = :id ")
 	public List<RefTable> findByRfp(int id);
-		
+
 }
