@@ -45,7 +45,7 @@ export default function Modals() {
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
-              Modal title
+              Documents and Bid Prices
             </h1>
             <button
               type="button"
@@ -120,7 +120,7 @@ export default function Modals() {
           <div class="modal-footer d-flex justify-content-between">
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-success"
               data-bs-dismiss="modal"
             >
               Generate PO

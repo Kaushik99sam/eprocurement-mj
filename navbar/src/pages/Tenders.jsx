@@ -32,9 +32,8 @@ export default function Tenders() {
     return (
         <>
             <div className="mb-2">
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-center">
                     <h5>List of RFQs</h5>
-                    <button className="btn btn-danger btn-sm">Generate CS</button>
                 </div>
             </div>
             <Table {...{

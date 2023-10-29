@@ -1,11 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import jsonData from "../data/SupplierData.json";
 import Modals from "../components/Modals/Modal";
-import { useParams } from "react-router-dom";
 import Table from "../components/Table/Table";
 
 export default function Suppliers() {
-    const { id } = useParams();
     const [data, setData] = useState(() => jsonData);
     console.log(jsonData);
 
@@ -36,7 +34,7 @@ export default function Suppliers() {
         },
         {
             header: "View",
-            cell: () => <><button className="btn btn-outline-primary btn-sm"
+            cell: () => <><button className="btn btn-outline-dark btn-sm"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"><i class="bi bi-eye"></i></button>
                 <Modals /></>,
@@ -45,8 +43,9 @@ export default function Suppliers() {
     console.log(data);
     return (
         <>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-between m-2">
                 <h5>List of Vendors</h5>
+                <button className="btn btn-success btn-sm">Generate CS</button>
             </div>
             <Table {...{
                 data, columns

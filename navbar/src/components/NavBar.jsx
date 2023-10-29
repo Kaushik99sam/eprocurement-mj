@@ -16,7 +16,7 @@ export default function NavBar2() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="offcanvas offcanvas-end w-50 p-3" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{backgroundColor: "#053B50"}}>
-            <div className="offcanvas-header" >
+            <div className="offcanvas-header">
               <div><img src={mjpro} alt="mjprolite" width="50" height="50" style={{ borderRadius: "50%" }}/></div>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
