@@ -13,6 +13,7 @@ import com.mjPro.entity.Po;
 import com.mjPro.entity.RefTable;
 import com.mjPro.repo.PoRepo;
 import com.mjPro.repo.RefTableRepo;
+import com.mjPro.service.EmailSenderService;
 import com.mjPro.service.PoService;
 import com.mjPro.util.ClassConvertor;
 @Service
@@ -24,12 +25,20 @@ public class PoServiceimpl implements PoService {
 	@Autowired
 	RefTableRepo refrepo;
 	
+	@Autowired
+	EmailSenderService es;
+	
 	@Override
 	public String addData(PoVo pvo) {
 		// TODO Auto-generated method stub
+		List<String> to = new ArrayList<String>();
+		List<String> body = new ArrayList<String>();
 		List<RefTableVo> refvoList = new ArrayList<>();
+		
 		for(RefTableVo refvo : pvo.getRefTable()) {
 			RefTable ref = refrepo.findById(refvo.getId()).get();
+			to.add(ref.getVendor().getEmail());
+			body.add(ref.getProduct().getName()+" "+ref.getBidPrice());
 			RefTableVo reftablevo = ClassConvertor.convertTo(ref, RefTableVo.class);
 			refvoList.add(reftablevo);
 		}
@@ -39,6 +48,7 @@ public class PoServiceimpl implements PoService {
 		po.setCreationTime(LocalDateTime.now());
 		po.setUpdationTime(LocalDateTime.now());
 		poRepo.save(po);
+		es.sendMultipleMail(to.toArray(), "PO", body.toArray());
 		return "Po data added successfully!!!";
 	}
 
