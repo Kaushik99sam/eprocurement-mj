@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #032b3b;
+    color: #9EDDFF;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+}
+
+.container{
+    /* position: absolute; */
+    position: relative;
+    /* background-color: #f9f9f9; */
+    width: 100%;
+    height: 100%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+    background-image: url('./assets/bgrfp.jpg');
+} 
