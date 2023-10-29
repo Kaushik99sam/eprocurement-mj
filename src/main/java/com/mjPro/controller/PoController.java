@@ -29,6 +29,8 @@ public class PoController {
 	@PostMapping("/")
 	public ResponseEntity<String> addData(@RequestBody PoVo povo) {
 		String str = poserv.addData(povo);
+//		String str = "hello";
+		System.out.println(povo);
 		return ResponseEntity.ok().body(str);
 	}
 	

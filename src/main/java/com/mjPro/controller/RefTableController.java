@@ -17,6 +17,7 @@ import com.mjPro.Vo.ProductVo;
 import com.mjPro.Vo.RefTableVo;
 import com.mjPro.Vo.VendorVo;
 import com.mjPro.entity.RefTable;
+import com.mjPro.repo.RefProjection;
 import com.mjPro.service.impl.RefTableServiceImpl;
 
 @RestController
@@ -65,5 +66,10 @@ public class RefTableController {
 	@GetMapping("/vendor/{id}")
 	public List<RefTableVo> getProductByVendorId(@PathVariable int id){
 		return refserv.getProductByVendorId(id);
+	}
+	
+	@GetMapping("/v/{id}")
+	public List<Object> getProductWithVendorList(@PathVariable int id){
+		return refserv.getProductWithVendorList(id);
 	}
 }

@@ -1,6 +1,9 @@
 package com.mjPro.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -59,5 +62,13 @@ public class RfpController {
 	public ResponseEntity<String> deleteData(@PathVariable int id) {
 		String str = rserv.deleteData(id);
 		return ResponseEntity.ok().body(str);
+	}
+	
+	@GetMapping("/obj")
+	public ResponseEntity<List<Map<String,Double>>> getObj(){
+		List<Map<String,Double>> obj = new ArrayList<Map<String,Double>>();
+		obj.add(new HashMap<String, Double>());
+		
+		return ResponseEntity.ok(obj);
 	}
 }

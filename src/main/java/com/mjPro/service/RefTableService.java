@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import com.mjPro.Vo.ProductVo;
 import com.mjPro.Vo.RefTableVo;
 import com.mjPro.entity.Product;
+import com.mjPro.repo.RefProjection;
 
 public interface RefTableService {
 	
@@ -21,4 +22,8 @@ public interface RefTableService {
 	public List<RefTableVo> getByRfp(int id);
 		
 	public List<RefTableVo> getProductByVendorId(int id);
+	
+	public List<Object> getProductWithVendorList(int id);
+	
+//	public List<RefProjection> getRefProjection();
 }

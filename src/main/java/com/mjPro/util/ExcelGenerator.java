@@ -18,8 +18,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.mjPro.entity.Product;
 import com.mjPro.entity.RefTable;
+import com.mjPro.entity.Vendor;
 
-public class ExcelGenerator {
+public class ExcelGenerator {	
 	public static String[] Headers = {
 			"id",
 			"title",
@@ -105,4 +106,57 @@ public class ExcelGenerator {
 		
 		return null;
 	}
+	
+	
+	public static List<Object> vendorListByProduct(List<RefTable> rl) {
+		Map<Product, List<Object>> m = new HashMap<Product, List<Object>>();
+		List<Object> ll = new ArrayList<Object>();
+		for(RefTable r: rl) {
+			List<Object> l = m.getOrDefault(r.getProduct(), new ArrayList<Object>());
+			l.add(new VendorWithBid(r.getVendor(),r.getBidPrice(),r.getId()));
+			m.put(r.getProduct(),l);
+		}
+		
+		for(Map.Entry<Product, List<Object>> mm : m.entrySet()) {
+			ll.add(new Object() {
+				
+				public Product getProduct() {
+					return mm.getKey();
+				}
+				
+				public List<Object> getVendorBid(){
+					return mm.getValue();
+				}
+			});
+		}
+	
+		return ll;
+	}
+	
+	
+	private static class VendorWithBid {
+		private Vendor vendor; 
+		private Double bidPrice;
+		private Integer refId;
+
+		public VendorWithBid(Vendor vendor, Double bidPrice,Integer id) {
+			this.vendor = vendor;
+			this.bidPrice = bidPrice;
+			this.refId = id;
+			
+		}
+		
+		public Vendor getVendor() {
+			return vendor;
+		}
+
+		public Double getBidPrice() {
+			return bidPrice;
+		}
+		
+		public Integer getRefId() {
+			return refId;
+		}
+	}
+
 }
