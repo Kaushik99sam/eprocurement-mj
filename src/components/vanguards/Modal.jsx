@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGetProductByVendorQuery } from "../../service/product";
 import documentData from "../../data/document.json";
+import { useDispatch } from "react-redux";
+import { useAddPoMutation } from "../../service/po";
 
 export default function Modals({ vendorId }) {
   const {
@@ -10,6 +12,9 @@ export default function Modals({ vendorId }) {
     data: Data,
     error,
   } = useGetProductByVendorQuery(vendorId);
+
+  const dispatch = useDispatch();
+  const [addPo] = useAddPoMutation()
 
   if (isLoading) {
     return <div>Loading ....</div>;
@@ -102,6 +107,7 @@ export default function Modals({ vendorId }) {
               type="button"
               class="btn btn-danger"
               data-bs-dismiss="modal"
+              onClick={()=>dispatch(addPo({refTable:[{id:item.id}]}))}
             >
               Generate PO
             </button>
